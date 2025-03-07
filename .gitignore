@@ -14,6 +14,10 @@ logs/
 /backend/.env
 /frontend/.env
 
+.env
+
+node_modules/
+
 # Vite
 /frontend/dist/
 /frontend/.vite/
