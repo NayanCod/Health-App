@@ -2,6 +2,8 @@ const express = require("express");
 const dotenv = require("dotenv");
 const cors = require("cors");
 const mongoose = require("mongoose");
+const authRoute = require("./routes/authRoute");
+// const moodRoute = require("./routes/moodRoute");
 
 // Load environment variables
 dotenv.config();
@@ -19,9 +21,12 @@ mongoose
   .catch((err) => console.error(err));
 
 // Default Route
-app.get("/", (req, res) => {
-  res.send("MERN Backend is Running 🚀");
-});
+// app.get("/", (req, res) => {
+//   res.send("MERN Backend is Running 🚀");
+// });
+
+app.use("/api/auth", authRoute);
+// app.use("/api/mood", moodRoute);
 
 // Start Server
 const PORT = process.env.PORT || 5000;
