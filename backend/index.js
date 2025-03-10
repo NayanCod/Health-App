@@ -3,7 +3,7 @@ const dotenv = require("dotenv");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const authRoute = require("./routes/authRoute");
-// const moodRoute = require("./routes/moodRoute");
+const moodRoute = require("./routes/moodRoute");
 
 dotenv.config();
 
@@ -20,7 +20,7 @@ mongoose
   .catch((err) => console.error(err));
 
 app.use("/api/auth", authRoute);
-// app.use("/api/mood", moodRoute);
+app.use("/api/mood", moodRoute);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
