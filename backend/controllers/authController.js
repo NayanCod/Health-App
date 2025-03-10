@@ -29,6 +29,21 @@ const googleLogin = async (req, res) => {
     }
 };
 
+const getUserProfile = async (req, res) => {
+    try {
+        const user = await User.findById(req.user.id); // Exclude password field if it exists
+
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
+        res.status(200).json({ message: "user data fetched successfully", user: user });
+    } catch (error) {
+        res.status(500).json({ message: 'Server error', error });
+    }
+};
+
 module.exports = {
     googleLogin,
+    getUserProfile,
 };

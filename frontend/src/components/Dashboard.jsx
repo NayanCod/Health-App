@@ -8,7 +8,7 @@ const Dashboard = () => {
     <>
       <div className="h-screen">
         <Topbar />
-        <div className="stats shadow flex flex-col">
+        <div className="stats flex flex-col">
           {/* Mood Check-ins */}
           <div className="stat">
             <div className="stat-figure text-primary">
