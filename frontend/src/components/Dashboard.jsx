@@ -87,7 +87,7 @@ const Dashboard = () => {
     <>
       <div className="h-screen">
         <Topbar />
-        <div className="stats flex flex-col">
+        <div className="stats flex">
           {/* Mood Check-ins */}
           <div className="stat">
             <div className="stat-figure text-primary">
@@ -134,7 +134,7 @@ const Dashboard = () => {
                   id={`slide${index + 1}`}
                   className="carousel-item relative w-full"
                 >
-                  <div className="w-full py-4 px-8">
+                  <div className="w-full px-8">
                     <div className="stat">
                       <div className="stat-figure text-primary">
                         <FaCalendarCheck size={34} />
@@ -142,7 +142,7 @@ const Dashboard = () => {
                       <div className="stat-title">
                         On {new Date(mood.timestamp).toLocaleDateString()}
                       </div>
-                      <div className="stat-value text-success">{mood.mood}</div>
+                      <div className="stat-value text-success text-lg">{mood.mood}</div>
                     </div>
                   </div>
                   <div className="absolute left-1 right-1 top-1/2 flex -translate-y-1/2 transform justify-between">
