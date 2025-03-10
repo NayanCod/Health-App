@@ -1,25 +1,47 @@
-import React from 'react'
+import Topbar from "./Topbar";
+import { GiMeditation } from "react-icons/gi";
+import { FaCalendarCheck } from "react-icons/fa";
+import { FcMindMap } from "react-icons/fc";
 
 const Dashboard = () => {
   return (
     <>
-        <div className='h-screen'>
-            <div className='flex justify-between items-center pt-2'>
-                <h1 className='text-2xl text-gray-400'>Hello, <span className='text-4xl text-white'>Nayan</span></h1>
-                <div className='flex items-center gap-3'>
-                    <div className="avatar">
-                        <div className="ring-primary ring-offset-base-100 w-10 rounded-full">
-                            <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
-                        </div>
-                    </div>
-                    <div className="avatar w-10">
-                        <img className='w-10 rounded-full' src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
-                    </div>
-                </div>
+      <div className="h-screen">
+        <Topbar />
+        <div className="stats shadow flex flex-col">
+          {/* Mood Check-ins */}
+          <div className="stat">
+            <div className="stat-figure text-primary">
+            <FaCalendarCheck size={34}/>
             </div>
-        </div>
-    </>
-  )
-}
+            <div className="stat-title">Mood Check-ins</div>
+            <div className="stat-value text-primary">15</div>
+            <div className="stat-desc">This month</div>
+          </div>
 
-export default Dashboard
+          {/* Meditation Minutes */}
+          <div className="stat">
+            <div className="stat-figure text-secondary">
+            <GiMeditation size={36}/>
+            </div>
+            <div className="stat-title">Meditation Minutes</div>
+            <div className="stat-value text-secondary">120</div>
+            <div className="stat-desc">This week</div>
+          </div>
+
+          {/* Stress Level */}
+          <div className="stat">
+            <div className="stat-figure text-accent">
+                <FcMindMap size={36} className="text-accent fill-accent"/>
+            </div>
+            <div className="stat-title">Stress Level</div>
+            <div className="stat-value">Low</div>
+            <div className="stat-desc text-accent">Keep up the good work!</div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default Dashboard;

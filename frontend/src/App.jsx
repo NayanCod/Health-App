@@ -19,10 +19,9 @@ function App() {
     return (
         <Router>
             <Routes>
+                <Route path='/' element={<Navigate to="/login" />}/>
                 <Route path="/login" element={isAuthneticate ? <Navigate to="/dashboard" /> : <Login/>} />
-                
                 <Route path="/dashboard" element={isAuthneticate ? <Dashboard /> : <Navigate to="/login" />} />
-                
                 <Route path="*" element={<NotFound />} />
             </Routes>
         </Router>
