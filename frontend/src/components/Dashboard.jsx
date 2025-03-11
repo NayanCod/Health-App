@@ -10,6 +10,7 @@ const Dashboard = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [showModal, setShowModal] = useState(false);
+  const [currentMonthAnalytics, setCurrentMonthAnalytics] = useState();
   const token = localStorage.getItem("token");
 
   useEffect(() => {
@@ -28,7 +29,22 @@ const Dashboard = () => {
       }
     };
 
+    const fetchCurrentMonthCheckins = async() => {
+      try {
+        const res = await axios.get(`${import.meta.env.VITE_BASE_URL}/mood/analytics`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        setCurrentMonthAnalytics(res?.data?.analytics);
+      } catch (error) {
+        console.log("falied to fetch current month analytics", error);
+        
+      }
+    }
+
     fetchMoods();
+    fetchCurrentMonthCheckins();
   }, [token]);
 
   useEffect(() => {
@@ -94,7 +110,7 @@ const Dashboard = () => {
               <FaCalendarCheck size={34} />
             </div>
             <div className="stat-title">Mood Check-ins</div>
-            <div className="stat-value text-primary">15</div>
+            <div className="stat-value text-primary">{currentMonthAnalytics?.currentMonthCheckins}</div>
             <div className="stat-desc">This month</div>
           </div>
 
@@ -113,8 +129,8 @@ const Dashboard = () => {
             <div className="stat-figure text-accent">
               <FcMindMap size={36} className="text-accent fill-accent" />
             </div>
-            <div className="stat-title">Stress Level</div>
-            <div className="stat-value">Low</div>
+            <div className="stat-title">Most Freq</div>
+            <div className="stat-value">{currentMonthAnalytics?.mostFrequentMood}</div>
             <div className="stat-desc text-accent">Keep up the good work!</div>
           </div>
         </div>
@@ -140,7 +156,7 @@ const Dashboard = () => {
                         <FaCalendarCheck size={34} />
                       </div>
                       <div className="stat-title">
-                        On {new Date(mood.timestamp).toLocaleDateString()}
+                        On {new Date(mood.timestamp).toDateString()}
                       </div>
                       <div className="stat-value text-success text-lg">{mood.mood}</div>
                     </div>
