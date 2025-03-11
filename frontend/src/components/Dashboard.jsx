@@ -124,12 +124,12 @@ const Dashboard = () => {
             <div className="stat-desc">This week</div>
           </div>
 
-          {/* Stress Level */}
+          {/* Freq Moods */}
           <div className="stat">
             <div className="stat-figure text-accent">
               <FcMindMap size={36} className="text-accent fill-accent" />
             </div>
-            <div className="stat-title">Most Freq</div>
+            <div className="stat-title">Freq Mood</div>
             <div className="stat-value">{currentMonthAnalytics?.mostFrequentMood}</div>
             <div className="stat-desc text-accent">Keep up the good work!</div>
           </div>
